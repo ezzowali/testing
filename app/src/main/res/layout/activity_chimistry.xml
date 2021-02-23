@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout tools:context=".physics"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <EditText
+        android:id="@+id/ed"
+        android:layout_width="266dp"
+        android:layout_height="71dp"
+        android:layout_alignStart="@+id/ed5"
+        android:layout_alignLeft="@+id/ed5"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="441dp"
+        android:ems="10"
+        android:hint="الاختيار الرابع "
+        android:inputType="textPersonName"
+        android:textColor="#df040b" />
+
+    <EditText
+        android:id="@+id/ed4"
+        android:layout_width="316dp"
+        android:layout_height="72dp"
+        android:layout_alignEnd="@+id/ed"
+        android:layout_alignRight="@+id/ed"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="532dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="الاختيار الصحيح"
+        android:inputType="textPersonName"
+        android:textColor="#df040b" />
+
+    <EditText
+        android:id="@+id/ed1"
+        android:layout_width="326dp"
+        android:layout_height="104dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="39dp"
+        android:ems="10"
+        android:hint="اكتب السؤال "
+        android:inputType="textPersonName"
+        android:textColor="#df040b" />
+
+
+    <EditText
+        android:id="@+id/ed2"
+        android:layout_width="316dp"
+        android:layout_height="72dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="108dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="161dp"
+        android:ems="10"
+        android:hint="الاختيار الاول "
+        android:inputType="textPersonName"
+        android:textColor="#df040b" />
+
+    <EditText
+        android:id="@+id/ed3"
+        android:layout_width="288dp"
+        android:layout_height="68dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginLeft="107dp"
+        android:layout_marginTop="255dp"
+        android:ems="10"
+        android:hint="الاختيار الثاني  "
+        android:inputType="textPersonName"
+        android:textColor="#df040b" />
+
+    <EditText
+        android:id="@+id/ed5"
+        android:layout_width="270dp"
+        android:layout_height="67dp"
+        android:layout_alignStart="@+id/ed3"
+        android:layout_alignLeft="@+id/ed3"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="349dp"
+        android:ems="10"
+        android:hint="الاختيار الثالث  "
+        android:inputType="textPersonName"
+        android:textColor="#df040b" />
+
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
+        android:layout_above="@+id/b2"
+        android:layout_alignStart="@+id/ed1"
+        android:layout_alignLeft="@+id/ed1"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginBottom="-1dp"
+        android:background="#FF5722"
+
+        android:text="تسجيل "
+        android:textColor="#ffffff"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
+        android:layout_alignStart="@+id/b1"
+        android:layout_alignLeft="@+id/b1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="-7dp"
+        android:background="#01579B"
+        android:text="العودة"
+        android:textColor="#ffffff"
+        android:textSize="30dp" />
+
+
+</RelativeLayout>
