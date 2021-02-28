@@ -54,17 +54,16 @@ class DataBase
         return $login;
     }
 
-    function signUp($table, $username, $password,$Phy_marks,$chim_marks)
+    function signUp($table, $username, $password)
     {
 
         $username = $this->prepareData($username);
         $password = $this->prepareData($password);
-        $Phy_marks=$this->prepareData($Phy_marks);
-        $chim_marks=$this->prepareData($chim_marks);
+       
 
 
         $this->sql =
-            "INSERT INTO " . $table . " (username, password,Phy_marks,chim_marks) VALUES ('"  . "$username" . "','" . "$password" ."','" . "$Phy_marks" ."','" . "$chim_marks" ."')";
+            "INSERT INTO " . $table . " (username, password) VALUES ('"  . "$username" . "','" . "$password" ."')";
 
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
@@ -107,7 +106,67 @@ class DataBase
     }
 
 
+    function Subject($table, $Subject,$timer)
+    {
 
+        $Subject = $this->prepareData($Subject);
+
+        $timer = $this->prepareData($timer);
+    
+
+        $this->sql =
+            "INSERT INTO " . $table . " (Subject,timer) VALUES ('"  . "$Subject" ."','" . "$timer" . "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
+
+
+
+
+    function Qus_sub($table,$Subject, $Question, $option1,$option2,$option3,$option4,$right_answer)
+    {
+
+        $Question = $this->prepareData($Question);
+        $option1 = $this->prepareData($option1);
+        $option2 = $this->prepareData($option2);
+        $option3 = $this->prepareData($option3);
+        $option4 = $this->prepareData($option4);
+        $right_answer= $this->prepareData($right_answer);
+        $Subject=$this->prepareData($Subject);
+
+        $this->sql =
+            "INSERT INTO " . $table . " (Subject,Question, option1,option2,option3,option4,right_answer) VALUES ('" . "$Subject" . "','" . "$Question" . "','" . "$option1" 
+            . "','" . "$option2" . "','" . "$option3" . "','" . "$option4" . "','" 
+            . "$right_answer" . "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
+
+
+    
+
+
+    function marks($table, $username, $subjectName,$marks)
+    {
+
+        $username = $this->prepareData($username);
+        $subjectName = $this->prepareData($subjectName);
+        $marks = $this->prepareData($marks);
+  
+
+        $this->sql =
+            "INSERT INTO " . $table . " (username, subjectName,marks) VALUES ('"  . "$username" . "','" . "$subjectName" . "','" . "$marks" .  "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
+
+
+
+
+    
 
 
 
