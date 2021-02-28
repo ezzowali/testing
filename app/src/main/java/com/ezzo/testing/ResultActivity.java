@@ -20,13 +20,6 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
 
-        int phyCorrect=showQ2.correctAnswer;
-        int phyMarks=showQ2.marks;
-        int phyWrong= showQ2.wrongAnswer;
-
-        int chimCorrect=show_Chim.correctAnswer;
-        int chimMarks=show_Chim.marks;
-        int chimWrong= show_Chim.wrongAnswer;
 
 
 
@@ -41,24 +34,12 @@ public class ResultActivity extends AppCompatActivity {
         StringBuffer sb3 = new StringBuffer();
 
 
-        if(phyCorrect!=0||phyMarks!=0||phyWrong!=0){
 
-            sb.append("الإجابات الصحيحة : " + showQ2.correctAnswer+ "\n");
+        sb.append("الإجابات الصحيحة : " + show_Qus_stu.correctAnswer+ "\n");
 
-            sb2.append("الإجابات الخاطئة : " + showQ2.wrongAnswer+ "\n");
+        sb2.append("الإجابات الخاطئة : " + show_Qus_stu.wrongAnswer+ "\n");
 
-            sb3.append("الدرجة النهائية : " + showQ2.marks + "\n");
-        }
-
-        if(chimCorrect!=0||chimMarks!=0||chimWrong!=0){
-
-            sb.append("الإجابات الصحيحة : " + show_Chim.correctAnswer+ "\n");
-
-            sb2.append("الإجابات الخاطئة : " + show_Chim.wrongAnswer+ "\n");
-
-            sb3.append("الدرجة النهائية : " + show_Chim.marks + "\n");
-        }
-
+        sb3.append("الدرجة النهائية : " + show_Qus_stu.marks + "\n");
 
 
         tv.setText(sb);
@@ -70,13 +51,10 @@ public class ResultActivity extends AppCompatActivity {
         btnRestart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showQ2.correctAnswer=0;
-                showQ2.marks=0;
-                showQ2.wrongAnswer=0;
+                show_Qus_stu.correctAnswer=0;
+                show_Qus_stu.marks=0;
+                show_Qus_stu.wrongAnswer=0;
 
-                show_Chim.correctAnswer=0;
-                show_Chim.marks=0;
-                show_Chim.wrongAnswer=0;
 
                 Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);

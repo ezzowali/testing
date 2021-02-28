@@ -12,17 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Testing"
         android:usesCleartextTraffic="true">
-        <activity android:name=".student_choice"></activity>
-        <activity android:name=".show_Chim" />
-        <activity android:name=".showQ2" />
-        <activity android:name=".chimistry" />
-        <activity android:name=".physics" />
-        <activity android:name=".choice" />
-        <activity android:name=".showQ" />
-        <activity android:name=".Q" />
+        <activity android:name=".show_Qus_stu" />
+        <activity android:name=".show_subjectStudent" />
+        <activity android:name=".write_Qus" />
+        <activity android:name=".add_subjectAdmin" />
+        <activity android:name=".show_subjectAdmin" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".signup" />
-        <activity android:name=".QuestionsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

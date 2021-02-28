@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static String name,password;
 
 
-    Button b1, b2, b3;
+    Button b1, b2, b3,b4;
     EditText ed1, ed2;
     TextView tx1, tx2;
     int counter = 5;
@@ -38,8 +38,13 @@ public class MainActivity extends AppCompatActivity {
         b3=findViewById(R.id.b3);
 
 
+
         tx1 = findViewById(R.id.textView);
         tx2 = findViewById(R.id.textView2);
+
+
+
+
 
 
 
@@ -124,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
 
 
-                                            startActivity(new Intent(MainActivity.this, choice.class));
+                                            startActivity(new Intent(MainActivity.this, show_subjectAdmin.class));
 
 
                                             finish();
@@ -133,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
 
 
-                                            startActivity(new Intent(MainActivity.this, student_choice.class));
+                                            startActivity(new Intent(MainActivity.this, show_subjectStudent.class));
 
                                             finish();
                                         }

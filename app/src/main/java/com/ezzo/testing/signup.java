@@ -62,16 +62,13 @@ public class signup extends AppCompatActivity {
 
                 name=String.valueOf(ed1.getText());
                 password=String.valueOf(ed2.getText());
-                Phy_marks="null";
-                chim_marks="null";
 
 
-                Log.i("tag",Phy_marks);
 
 
 
                 if ((!name.equals("")) && (!password.equals(""))){
-/////
+
 
 
                     Handler handler = new Handler();
@@ -80,17 +77,14 @@ public class signup extends AppCompatActivity {
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[4];
+                            String[] field = new String[2];
                             field[0] = "username";
                             field[1] = "password";
-                            field[2]="Phy_marks";
-                            field[3]="chim_marks";
+
                             //Creating array for data
-                            String[] data = new String[4];
+                            String[] data = new String[2];
                             data[0] =name;
                             data[1] = password;
-                            data[2]=Phy_marks;
-                            data[3]=chim_marks;
 
 
 
