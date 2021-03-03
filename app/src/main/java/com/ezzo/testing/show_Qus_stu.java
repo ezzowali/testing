@@ -24,6 +24,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
 public class show_Qus_stu extends AppCompatActivity {
@@ -32,15 +33,19 @@ public class show_Qus_stu extends AppCompatActivity {
 
 
 
+
+
     private final long START_TIME_IN_MILLIS = timer1 *60000;
-    private TextView mTextViewCountDown;
+
 
     private CountDownTimer mCountDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
 
-    private  static final String url="http://192.168.64.2/Login/show_sub_Q.php";
+    private  static final String url="http://192.168.64.2/Server/show_sub_Q.php";
+    int minutes;
+    int seconds ;
     ListView lv;
     Button b1;
     RadioGroup radio_g;
@@ -48,7 +53,7 @@ public class show_Qus_stu extends AppCompatActivity {
     RadioButton r2;
     RadioButton r3;
     RadioButton r4;
-    TextView tv1;
+    TextView tv1,text_view_countdown;
     public static int marks=0;
     public static int correctAnswer =0;
     public static int wrongAnswer=0;
@@ -62,6 +67,7 @@ public class show_Qus_stu extends AppCompatActivity {
     private static String option3[];
     private static String option4[];
     private static String subject[];
+
 
 
 
@@ -105,12 +111,15 @@ public class show_Qus_stu extends AppCompatActivity {
 
         b1 = findViewById(R.id.b1);
         tv1=findViewById(R.id.tv1);
+        text_view_countdown = findViewById(R.id.text_view_countdown);
         startTimer();
+
 
         Fdata();
 
 
-        mTextViewCountDown = findViewById(R.id.text_view_countdown);
+
+
 
 
 
@@ -138,16 +147,26 @@ public class show_Qus_stu extends AppCompatActivity {
     }
 
 
-    private void updateCountDownText() {
-        int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
-        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
-        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-        mTextViewCountDown.setText(timeLeftFormatted);
 
-        if (minutes==0&&seconds==0 && wrongAnswer!=0 &&correctAnswer!=0&&marks!=0){
+    private void updateCountDownText() {
+        minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+         seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        text_view_countdown.setText(timeLeftFormatted);
+
+        Log.i("Qus", String.valueOf(Qus.size()));
+        Log.i("lylyl", String.valueOf(minutes));
+        Log.i("lylyl22", String.valueOf(seconds));
+        Log.i("wrongAnswer", String.valueOf(wrongAnswer));
+        Log.i("correctAnswer", String.valueOf(correctAnswer));
+
+
+
+
+        if (minutes==0&&seconds==0 &&(wrongAnswer>0||correctAnswer>0)){
 
             marks = correctAnswer;
-            Log.i("tag", String.valueOf(marks));
+            Log.i("tawlwllg", String.valueOf(marks));
 
             String[] field = new String[3];
 
@@ -164,13 +183,13 @@ public class show_Qus_stu extends AppCompatActivity {
             data[2]=String.valueOf(marks);
 
 
-            PutData putData = new PutData("http://192.168.64.2/Login/marks.php", "POST", field, data);
+            PutData putData = new PutData("http://192.168.64.2/Server/marks.php", "POST", field, data);
             Log.i("t5555", String.valueOf(marks));
             if (putData.startPut()) {
                 if (putData.onComplete()) {
                     String result = putData.getResult();
                     char str = result.charAt(6);
-                    Log.i("PutData0", String.valueOf(str));
+                    Log.i("PutDatddda0", String.valueOf(str));
 
 
 
@@ -184,7 +203,10 @@ public class show_Qus_stu extends AppCompatActivity {
 
                     }
 
+                    Intent in = new Intent(getApplicationContext(), ResultActivity.class);
+                    startActivity(in);
                     Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         }
@@ -270,15 +292,21 @@ public class show_Qus_stu extends AppCompatActivity {
                     }
 
 
+                    ArrayList<String > arrayList = new ArrayList<>();
+                    arrayList.add(op1.get(0));
+                    arrayList.add(op2.get(0));
+                    arrayList.add(op3.get(0));
+                    arrayList.add(op4.get(0));
+                    Collections.shuffle( arrayList );
+                    tv1.setText(Qus.get(0));
+                    r1.setText(arrayList.get(0));
+                    r2.setText(arrayList.get(1));
+                    r3.setText(arrayList.get(2));
+                    r4.setText(arrayList.get(3));
 
 
 
 
-                            tv1.setText(Qus.get(0));
-                            r1.setText(op1.get(0));
-                            r2.setText(op2.get(0));
-                            r3.setText(op3.get(0));
-                            r4.setText(op4.get(0));
 
                     b1.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -318,11 +346,24 @@ public class show_Qus_stu extends AppCompatActivity {
 
                                     Log.i("inside", String.valueOf(nameEquility));
 
-                                    tv1.setText(Qus.get(secondQus));
-                                    r1.setText(op1.get(secondQus));
-                                    r2.setText(op2.get(secondQus));
-                                    r3.setText(op3.get(secondQus));
-                                    r4.setText(op4.get(secondQus));
+//                                tv1.setText(Qus.get(secondQus));
+                                ArrayList<String > arrayList = new ArrayList<>();
+                                arrayList.add(op1.get(secondQus));
+                                arrayList.add(op2.get(secondQus));
+                                arrayList.add(op3.get(secondQus));
+                                arrayList.add(op4.get(secondQus));
+                                Collections.shuffle( arrayList );
+                                tv1.setText(Qus.get(secondQus));
+                                r1.setText(arrayList.get(0));
+                                r2.setText(arrayList.get(1));
+                                r3.setText(arrayList.get(2));
+                                r4.setText(arrayList.get(3));
+
+
+//                                    r1.setText(op1.get(secondQus));
+//                                    r2.setText(op2.get(secondQus));
+//                                    r3.setText(op3.get(secondQus));
+//                                    r4.setText(op4.get(secondQus));
 
 
                                     Subject2.add(nameEquility);
@@ -365,7 +406,7 @@ public class show_Qus_stu extends AppCompatActivity {
                                 data[2]=String.valueOf(marks);
 
 
-                                PutData putData = new PutData("http://192.168.64.2/Login/marks.php", "POST", field, data);
+                                PutData putData = new PutData("http://192.168.64.2/Server/marks.php", "POST", field, data);
                                 Log.i("t5555", String.valueOf(marks));
                                 if (putData.startPut()) {
                                     if (putData.onComplete()) {

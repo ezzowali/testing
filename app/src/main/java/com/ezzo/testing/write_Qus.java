@@ -1,48 +1,49 @@
 package com.ezzo.testing;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
-
+import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-
-import android.widget.Toast;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import java.util.Calendar;
 
 
-public class write_Qus extends AppCompatActivity {
+public class write_Qus extends AppCompatActivity  {
 
     Button b1;
     EditText ed1, ed2,ed3,ed4,ed5,ed;
-
+    Button btnDatePicker, btnTimePicker;
+    EditText txtDate, txtTime;
+    int mYear, mMonth, mDay, mHour, mMinute;
     String Subject= show_subjectAdmin.gg;
+    TextView dateText;
 
-
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_write_qus);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_write_qus );
 
-        ed5 = findViewById( R.id.ed5);
-        ed = findViewById( R.id.ed);
-        ed1 = findViewById(R.id.ed1);
-        ed2 = findViewById(R.id.ed2);
-        ed3 = findViewById(R.id.ed3);
-        ed4= findViewById( R.id.ed4);
-        b1 = findViewById(R.id.b1);
-
-
+        ed5 = findViewById( R.id.ed5 );
+        ed = findViewById( R.id.ed );
+        ed1 = findViewById( R.id.ed1 );
+        ed2 = findViewById( R.id.ed2 );
+        ed3 = findViewById( R.id.ed3 );
+        ed4 = findViewById( R.id.ed4 );
+        b1 = findViewById( R.id.b1 );
 
 
 
@@ -98,7 +99,7 @@ public class write_Qus extends AppCompatActivity {
 
 
 
-                            PutData putData = new PutData("http://192.168.64.2/Login/Qus_sub.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.64.2/Server/Qus_sub.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
@@ -146,6 +147,7 @@ public class write_Qus extends AppCompatActivity {
     }
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -173,4 +175,6 @@ public class write_Qus extends AppCompatActivity {
 
         }
     }
+
+
 }

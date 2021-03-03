@@ -1,5 +1,6 @@
 package com.ezzo.testing;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +33,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class show_subjectAdmin extends AppCompatActivity {
-    private static final String apiurl = "http://192.168.64.2/Login/Subject.php";
+    private static final String apiurl = "http://192.168.64.2/Server/Subject.php";
     ListView lv;
 
     Button b_subj,b_add;
@@ -40,6 +41,10 @@ public class show_subjectAdmin extends AppCompatActivity {
 
     private static String subject[];
     private static String timer[];
+    private static String first_date[];
+    private static String second_date[];
+    private static String first_time[];
+    private static String second_time[];
 
 
     public static String gg;
@@ -58,7 +63,9 @@ public class show_subjectAdmin extends AppCompatActivity {
 
         fetch_data_into_array(lv);
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String s = lv.getItemAtPosition(position).toString();
@@ -114,11 +121,22 @@ public class show_subjectAdmin extends AppCompatActivity {
                     subject = new String[ja.length()];
                     timer =new String[ja.length()];
 
+                    first_date = new String[ja.length()];
+                    second_date =new String[ja.length()];
+                    first_time = new String[ja.length()];
+                    second_time =new String[ja.length()];
+
+
+
 
                     for (int i = 0; i < ja.length(); i++) {
                         jo = ja.getJSONObject(i);
                         subject[i] = jo.getString("Subject");
                         timer[i] = jo.getString("timer");
+                        first_date[i]=jo.getString("first_date");
+                        second_date[i]=jo.getString("second_date");
+                        first_time[i]=jo.getString("first_time");
+                        second_time[i]=jo.getString("second_time");
 
 
 
@@ -126,7 +144,7 @@ public class show_subjectAdmin extends AppCompatActivity {
 
                     }
 
-                    myadapter adptr = new myadapter(getApplicationContext(), subject,timer);
+                    myadapter adptr = new myadapter(getApplicationContext(), subject,timer,first_date,second_date,first_time,second_time);
                     lv.setAdapter(adptr);
 
                 } catch (Exception ex) {
@@ -167,13 +185,30 @@ public class show_subjectAdmin extends AppCompatActivity {
         Context context;
         String subject[];
         String timer[];
+        String first_date[];
+        String second_date[];
+        String first_time[];
+        String second_time[];
 
 
-        myadapter(Context c, String subject[],String timer[]) {
+
+        myadapter(Context c, String subject[],
+                  String timer[],
+                  String first_date[],
+                String second_date[],
+                String first_time[],
+                String second_time[]) {
             super(c, R.layout.subject_list, R.id.tv1, subject);
             context = c;
             this.subject = subject;
             this.timer=timer;
+
+
+            this.first_date = first_date;
+            this.second_date=second_date;
+            this.first_time=first_time;
+            this.second_time=second_time;
+
 
         }
 
@@ -181,7 +216,7 @@ public class show_subjectAdmin extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-             View subject_list = inflater.inflate(R.layout.subject_list, parent, false);
+            View subject_list = inflater.inflate(R.layout.subject_list, parent, false);
 
 
             TextView tv1 = subject_list.findViewById(R.id.tv1);
@@ -189,10 +224,27 @@ public class show_subjectAdmin extends AppCompatActivity {
             Button b_add=subject_list.findViewById(R.id.b_add);
 
 
+            TextView f_date = subject_list.findViewById(R.id.f_date);
+            TextView s_date = subject_list.findViewById(R.id.s_date);
+
+            TextView f_time = subject_list.findViewById(R.id.f_time);
+            TextView s_time = subject_list.findViewById(R.id.s_time);
+
+
+
+
+
 
 
             tv1.setText(subject[position]);
             tv2.setText(timer[position]);
+
+
+            f_date.setText(first_date[position]);
+            s_date.setText(second_date[position]);
+
+            f_time.setText(first_time[position]);
+            s_time.setText(second_time[position]);
 
             b_add.setOnClickListener(new View.OnClickListener() {
 
@@ -201,9 +253,9 @@ public class show_subjectAdmin extends AppCompatActivity {
                 public void onClick(View v) {
                     startActivity(new Intent(show_subjectAdmin.this, write_Qus.class));
 
-Log.i("vcvcv", subject[position]);
+                    Log.i("vcvcv", subject[position]);
 
-gg=subject[position];
+                    gg=subject[position];
 
                 }
 
@@ -225,4 +277,3 @@ gg=subject[position];
     }
 
 }
-

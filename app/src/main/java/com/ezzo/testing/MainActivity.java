@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             data[1] =password;
 
 
-                            PutData putData = new PutData("http://192.168.64.2/Login/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.64.2/Server/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();

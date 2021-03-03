@@ -29,11 +29,53 @@
             android:text="Timer"
             android:textSize="25dp" />
 
+
+        <TextView
+            android:id="@+id/f_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/s_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+
+            android:textSize="25dp" />
+
+
+        <TextView
+            android:id="@+id/f_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/s_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+
+            android:textSize="25dp" />
+
+
+
         <Button
             android:id="@+id/b_add"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="click" />
+
+
 
     </LinearLayout>
 

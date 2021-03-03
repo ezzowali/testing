@@ -88,7 +88,7 @@ public class signup extends AppCompatActivity {
 
 
 
-                            PutData putData = new PutData("http://192.168.64.2/Login/signup.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.64.2/Server/signup.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
