@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -73,7 +75,7 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
 //        Second Interval
         btnDatePicker2.setOnClickListener(this);
         btnTimePicker2.setOnClickListener(this);
-//        b.setOnClickListener(this);
+        b.setOnClickListener(this);
 
 
         b1.setOnClickListener(new View.OnClickListener() {
@@ -373,5 +375,32 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
 
 
 
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate( R.menu.back_write_qus, menu );
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+
+        switch (item.getItemId()) {
+
+            case R.id.back:
+                startActivity( new Intent( add_subjectAdmin.this, show_subjectAdmin.class ) );
+
+                return true;
+            default:
+                return super.onOptionsItemSelected( item );
+
+
+        }
     }
 }

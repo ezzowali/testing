@@ -101,7 +101,7 @@ public class write_Qus extends AppCompatActivity {
                             field[4] = "option4";
                             field[5] = "right_answer";
                             field[6] = "Subject";
-                            field[7]="image";
+
 
 //                            Log.i("bit", getStringImage(bitmap));
 
