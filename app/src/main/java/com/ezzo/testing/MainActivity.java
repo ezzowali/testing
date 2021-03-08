@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static String name,password;
 
 
-    Button b1, b2, b3,b4;
+    Button b1, b2,b4;
     EditText ed1, ed2;
     TextView tx1, tx2;
     int counter = 5;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         ed2 = findViewById(R.id.ed2);
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
-        b3=findViewById(R.id.b3);
+
 
 
 
@@ -46,18 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, signup.class));
-
-
-            }
-
-
-        });
 
 
 

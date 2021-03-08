@@ -14,6 +14,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -42,6 +45,7 @@ import java.util.Locale;
 public class show_subjectStudent extends AppCompatActivity {
     private static final String apiurl = "http://192.168.64.2/Server/Subject.php";
     ListView lv;
+    TextView none;
 
     Button b_add;
 
@@ -88,6 +92,8 @@ public class show_subjectStudent extends AppCompatActivity {
 
         b_add = findViewById( R.id.b_add );
 
+        none = (TextView) findViewById( R.id.none );
+
         fetch_data_into_array( lv );
 
         lv.setOnItemClickListener( new AdapterView.OnItemClickListener() {
@@ -103,6 +109,35 @@ public class show_subjectStudent extends AppCompatActivity {
         } );
 
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.back_write_qus, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+
+        switch (item.getItemId()) {
+
+            case R.id.back:
+                startActivity(new Intent(show_subjectStudent.this, MainActivity.class));
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+
+
+
+
+        }
     }
 
     public void fetch_data_into_array(View view) {
@@ -142,15 +177,6 @@ public class show_subjectStudent extends AppCompatActivity {
                     for (int i = 0; i < ja.length(); i++) {
                         jo = ja.getJSONObject(i);
 
-//                        Log.i("hhhhhh", String.valueOf(jo));
-
-//                        first_date2[i]=jo.getString("first_date");
-//                        second_date2[i]=jo.getString("second_date");
-//                        subject2[i]=jo.getString("Subject");
-
-//                        Log.i("@@@@x", String.valueOf(ja.length()));
-//
-//                        Log.i("@%%%x", String.valueOf(jo.length()));
 
 
 
@@ -161,9 +187,6 @@ public class show_subjectStudent extends AppCompatActivity {
                                 second_date[i]=jo.getString("second_date");
                                 first_time[i]=jo.getString("first_time");
                                 second_time[i]=jo.getString("second_time");
-
-//                                Log.i("hjhj", first_date[i]);
-//                                Log.i("qq",subject[i]);
 
 
 
@@ -191,7 +214,7 @@ public class show_subjectStudent extends AppCompatActivity {
                             f_time.add(first_time[i]);
                             s_time.add(second_time[i]);
 
-//                            Log.i("i", Sub.get(i));
+//
 
                         }
                     }
@@ -217,39 +240,22 @@ public class show_subjectStudent extends AppCompatActivity {
                         }
 
 
+                    if (subject2.length==0){
+
+                        none.setText("لا يوجد اختبار ");
+                    }
+
 
 
 
                     Log.i("sub2", String.valueOf(subject2.length));
 
-//                    Log.i("sub", String.valueOf(subject.length));
 
-
-
-
-
-
-
-
-//                    Log.i("time",currentDateandTime3);
 
 
 
                     myadapter adptr = new myadapter( getApplicationContext(), subject2, timer2,first_date2,second_date2,first_time2,second_time2 );
                     lv.setAdapter( adptr );
-
-//                    Log.i("cccvvv", String.valueOf(subject[0]));
-
-
-
-
-
-
-
-
-
-
-
 
 
                 } catch (Exception ex) {
@@ -332,6 +338,7 @@ public class show_subjectStudent extends AppCompatActivity {
 
 
 
+
                 TextView tv1 = subject_list.findViewById(R.id.tv1);
                 TextView tv2 = subject_list.findViewById(R.id.tv2);
                 Button b_add=subject_list.findViewById(R.id.b_add);
@@ -369,7 +376,13 @@ public class show_subjectStudent extends AppCompatActivity {
 
 
                 });
-        
+
+
+
+
+
+
+
 
 
 
