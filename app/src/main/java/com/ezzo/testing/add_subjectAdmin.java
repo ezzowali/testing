@@ -1,7 +1,5 @@
 
 package com.ezzo.testing;
-
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
@@ -22,11 +20,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
 
 public class add_subjectAdmin extends AppCompatActivity implements View.OnClickListener   {
     Button b, b1, b2;
@@ -45,7 +39,7 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_subject_admin);
+        setContentView( R.layout.activity_add_subject_admin);
         btnDatePicker = (Button) findViewById(R.id.btn_date);
         btnTimePicker = (Button) findViewById(R.id.btn_time);
         txtDate = (EditText) findViewById(R.id.in_date);
@@ -65,7 +59,6 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
         b = (Button) findViewById(R.id.b);
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
-        tx1 = findViewById(R.id.textView);
         tx2 = findViewById(R.id.textView2);
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
@@ -75,9 +68,17 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
 //        Second Interval
         btnDatePicker2.setOnClickListener(this);
         btnTimePicker2.setOnClickListener(this);
-        b.setOnClickListener(this);
+//        b.setOnClickListener(this);
 
+        b.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                startActivity(new Intent(add_subjectAdmin.this, show_subjectAdmin.class));
+
+                finish();
+            }
+        } );
         b1.setOnClickListener(new View.OnClickListener() {
 
 
@@ -195,10 +196,10 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
 
                     }
                     else if (monthOfYear<10){
-                    first_date = dayOfMonth + "-" + "0"+(monthOfYear + 1) + "-" + year;
-                    txtDate.setText(dayOfMonth + "-" +"0"+ (monthOfYear + 1) + "-" + year);
+                        first_date = dayOfMonth + "-" + "0"+(monthOfYear + 1) + "-" + year;
+                        txtDate.setText(dayOfMonth + "-" +"0"+ (monthOfYear + 1) + "-" + year);
 
-                }
+                    }
                     else if (dayOfMonth<10){
                         first_date = "0"+dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
                         txtDate.setText("0"+dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
@@ -292,7 +293,7 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
                         Log.i("fewefqeff",first_time);
 
                     }
-                   else if(hourOfDay<10){
+                    else if(hourOfDay<10){
 
                         first_time= "0"+hourOfDay + ":" + minute;
                         txtTime.setText("0"+hourOfDay + ":" + minute);
@@ -348,7 +349,7 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
                         txtTime2.setText("0"+hourOfDay + ":" + "0"+minute);
 
                     }
-                   else if(hourOfDay<10){
+                    else if(hourOfDay<10){
 
                         second_time= "0"+hourOfDay + ":" + minute;
                         txtTime2.setText("0"+hourOfDay + ":" + minute);
@@ -375,10 +376,7 @@ public class add_subjectAdmin extends AppCompatActivity implements View.OnClickL
 
 
 
-
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

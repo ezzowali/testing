@@ -1,11 +1,9 @@
 package com.ezzo.testing;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -57,7 +55,7 @@ public class show_subjectAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_subject_admin);
 
-        lv = (ListView) findViewById(R.id.lv);
+        lv = (ListView) findViewById( R.id.lv);
 
         b_add=findViewById(R.id.b_add);
 
@@ -195,10 +193,10 @@ public class show_subjectAdmin extends AppCompatActivity {
         myadapter(Context c, String subject[],
                   String timer[],
                   String first_date[],
-                String second_date[],
-                String first_time[],
-                String second_time[]) {
-            super(c, R.layout.subject_list, R.id.tv1, subject);
+                  String second_date[],
+                  String first_time[],
+                  String second_time[]) {
+            super(c, R.layout.subject_list_admin, R.id.tv1, subject);
             context = c;
             this.subject = subject;
             this.timer=timer;
@@ -216,12 +214,13 @@ public class show_subjectAdmin extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View subject_list = inflater.inflate(R.layout.subject_list, parent, false);
+            View subject_list = inflater.inflate(R.layout.subject_list_admin, parent, false);
 
 
             TextView tv1 = subject_list.findViewById(R.id.tv1);
             TextView tv2 = subject_list.findViewById(R.id.tv2);
             Button b_add=subject_list.findViewById(R.id.b_add);
+            Button b_add_Pic=subject_list.findViewById(R.id.b_add_Pic);
 
 
             TextView f_date = subject_list.findViewById(R.id.f_date);
@@ -261,6 +260,23 @@ public class show_subjectAdmin extends AppCompatActivity {
 
 
             });
+
+            b_add_Pic.setOnClickListener(new View.OnClickListener() {
+
+
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(show_subjectAdmin.this, upload_image.class));
+
+                    Log.i("vcvcv", subject[position]);
+
+                    gg=subject[position];
+
+                }
+
+
+            });
+
 
 
 

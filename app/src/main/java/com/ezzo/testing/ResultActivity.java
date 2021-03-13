@@ -1,15 +1,14 @@
 package com.ezzo.testing;
 
-
-
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 
 public class ResultActivity extends AppCompatActivity {
     TextView tv, tv2, tv3;
@@ -17,11 +16,14 @@ public class ResultActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView( R.layout.activity_result);
 
 
 
+Log.i("minnnn", String.valueOf(show_Qus_stu.minutes));
+Log.i("minnnn", String.valueOf(show_Qus_stu.seconds));
 
+        show_Qus_stu.seconds=0;
 
         tv = (TextView) findViewById(R.id.tvres);
         tv2 = (TextView) findViewById(R.id.tvres2);

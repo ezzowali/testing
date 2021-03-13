@@ -2,39 +2,31 @@
 
 
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".show_subjectAdmin">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:background="@drawable/wirtequs" >
+
+<TextView
+    android:id="@+id/none"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+
+    android:textSize="40dp" />
 
 
 
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
 
-
-
+    android:orientation="vertical" >
 
     <ListView
         android:id="@+id/lv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F3F8F8"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
 
-    </ListView>
-
-    <TextView
-        android:id="@+id/none"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/design_default_color_error"
-
-        android:textSize="180px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lv" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

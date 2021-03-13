@@ -1,12 +1,7 @@
 package com.ezzo.testing;
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -26,6 +21,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -33,12 +33,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -59,7 +55,6 @@ public class show_subjectStudent extends AppCompatActivity {
     private static String second_time[];
 
 
-
     private static String subject2[];
     private static String timer2[];
 
@@ -75,8 +70,6 @@ public class show_subjectStudent extends AppCompatActivity {
     ArrayList<String> s_date = new ArrayList<String>();
     ArrayList<String> f_time = new ArrayList<String>();
     ArrayList<String> s_time = new ArrayList<String>();
-
-
 
 
     public static String gg;
@@ -115,7 +108,7 @@ public class show_subjectStudent extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.back_write_qus, menu);
+        inflater.inflate( R.menu.back_write_qus, menu );
         return true;
 
     }
@@ -127,14 +120,11 @@ public class show_subjectStudent extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.back:
-                startActivity(new Intent(show_subjectStudent.this, MainActivity.class));
+                startActivity( new Intent( show_subjectStudent.this, MainActivity.class ) );
 
                 return true;
             default:
-                return super.onOptionsItemSelected(item);
-
-
-
+                return super.onOptionsItemSelected( item );
 
 
         }
@@ -153,66 +143,54 @@ public class show_subjectStudent extends AppCompatActivity {
                     timer = new String[ja.length()];
 
                     first_date = new String[ja.length()];
-                    second_date =new String[ja.length()];
+                    second_date = new String[ja.length()];
 
 
 //                    first_date2 = new String[ja.length()];
 //                    second_date2 =new String[ja.length()];
 
                     first_time = new String[ja.length()];
-                    second_time =new String[ja.length()];
+                    second_time = new String[ja.length()];
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                    String currentDateandTime = sdf.format(new Date());
-
-
+                    SimpleDateFormat sdf = new SimpleDateFormat( "dd-MM-yyyy", Locale.getDefault() );
+                    String currentDateandTime = sdf.format( new Date() );
 
 
-                    SimpleDateFormat sdf3 = new SimpleDateFormat("HH:mm", Locale.getDefault());
-                    String currentDateandTime3 = sdf3.format(new Date());
+                    SimpleDateFormat sdf3 = new SimpleDateFormat( "HH:mm", Locale.getDefault() );
+                    String currentDateandTime3 = sdf3.format( new Date() );
 
-                    Log.i("time",currentDateandTime3);
+                    Log.i( "time", currentDateandTime3 );
 
 
                     for (int i = 0; i < ja.length(); i++) {
-                        jo = ja.getJSONObject(i);
+                        jo = ja.getJSONObject( i );
 
 
-
-
-
-                                subject[i]=jo.getString("Subject");
-                                timer[i]=jo.getString("timer");
-                                first_date[i]=jo.getString("first_date");
-                                second_date[i]=jo.getString("second_date");
-                                first_time[i]=jo.getString("first_time");
-                                second_time[i]=jo.getString("second_time");
-
-
-
-
-
+                        subject[i] = jo.getString( "Subject" );
+                        timer[i] = jo.getString( "timer" );
+                        first_date[i] = jo.getString( "first_date" );
+                        second_date[i] = jo.getString( "second_date" );
+                        first_time[i] = jo.getString( "first_time" );
+                        second_time[i] = jo.getString( "second_time" );
 
 
                     }
 
 
-
-
                     for (int i = 0; i < subject.length; i++) {
 
 
-                        if ((first_date[i].compareTo(currentDateandTime) <= 0
-                                && second_date[i].compareTo(currentDateandTime) >= 0) &&
-                                (first_time[i].compareTo(currentDateandTime3) <= 0
-                                        && second_time[i].compareTo(currentDateandTime3) >= 0)) {
+                        if ((first_date[i].compareTo( currentDateandTime ) <= 0
+                                && second_date[i].compareTo( currentDateandTime ) >= 0) &&
+                                (first_time[i].compareTo( currentDateandTime3 ) <= 0
+                                        && second_time[i].compareTo( currentDateandTime3 ) >= 0)) {
 
-                            Sub.add(subject[i]);
-                            tim.add(timer[i]);
-                            f_date.add(first_date[i]);
-                            s_date.add(second_date[i]);
-                            f_time.add(first_time[i]);
-                            s_time.add(second_time[i]);
+                            Sub.add( subject[i] );
+                            tim.add( timer[i] );
+                            f_date.add( first_date[i] );
+                            s_date.add( second_date[i] );
+                            f_time.add( first_time[i] );
+                            s_time.add( second_time[i] );
 
 //
 
@@ -229,15 +207,14 @@ public class show_subjectStudent extends AppCompatActivity {
                     for (int i = 0; i < Sub.size(); i++) {
 
 
+                        subject2[i] = Sub.get( i );
+                        timer2[i] = tim.get( i );
+                        first_date2[i] = f_date.get( i );
+                        second_date2[i] = s_date.get( i );
+                        first_time2[i] = f_time.get( i );
+                        second_time2[i] = s_time.get( i );
 
-                                                    subject2[i]=Sub.get(i);
-                                                    timer2[i]=tim.get(i);
-                                                    first_date2[i]=f_date.get(i);
-                                                    second_date2[i]=s_date.get(i);
-                                                    first_time2[i]=f_time.get(i);
-                                                    second_time2[i]=s_time.get(i);
-
-                        }
+                    }
 
 
                     if (subject2.length==0){
@@ -246,15 +223,10 @@ public class show_subjectStudent extends AppCompatActivity {
                     }
 
 
+                    Log.i( "sub2", String.valueOf( subject2.length ) );
 
 
-                    Log.i("sub2", String.valueOf(subject2.length));
-
-
-
-
-
-                    myadapter adptr = new myadapter( getApplicationContext(), subject2, timer2,first_date2,second_date2,first_time2,second_time2 );
+                    myadapter adptr = new myadapter( getApplicationContext(), subject2, timer2, first_date2, second_date2, first_time2, second_time2 );
                     lv.setAdapter( adptr );
 
 
@@ -302,23 +274,22 @@ public class show_subjectStudent extends AppCompatActivity {
         String second_time[];
 
 
-
         myadapter(Context c, String subject[],
                   String timer[],
                   String first_date[],
                   String second_date[],
                   String first_time[],
                   String second_time[]) {
-            super(c, R.layout.subject_list, R.id.tv1, subject);
+            super( c, R.layout.subject_list_admin, R.id.tv1, subject );
             context = c;
             this.subject = subject;
-            this.timer=timer;
+            this.timer = timer;
 
 
             this.first_date = first_date;
-            this.second_date=second_date;
-            this.first_time=first_time;
-            this.second_time=second_time;
+            this.second_date = second_date;
+            this.first_time = first_time;
+            this.second_time = second_time;
 
 
         }
@@ -326,67 +297,47 @@ public class show_subjectStudent extends AppCompatActivity {
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View subject_list = inflater.inflate(R.layout.subject_list, parent, false);
+            LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+            View subject_list = inflater.inflate( R.layout.subject_list_stu, parent, false );
 
 
+            TextView tv1 = subject_list.findViewById( R.id.tv1 );
+            TextView tv2 = subject_list.findViewById( R.id.tv2 );
+            Button b_add = subject_list.findViewById( R.id.b_add );
 
 
+            TextView f_date = subject_list.findViewById( R.id.f_date );
+            TextView s_date = subject_list.findViewById( R.id.s_date );
+
+            TextView f_time = subject_list.findViewById( R.id.f_time );
+            TextView s_time = subject_list.findViewById( R.id.s_time );
+
+            tv1.setText( subject[position] );
+            tv2.setText( timer[position] );
 
 
+            f_date.setText( first_date[position] );
+            s_date.setText( second_date[position] );
+
+            f_time.setText( first_time[position] );
+            s_time.setText( second_time[position] );
+
+            b_add.setOnClickListener( new View.OnClickListener() {
 
 
+                @Override
+                public void onClick(View v) {
+                    startActivity( new Intent( show_subjectStudent.this, show_Qus_stu.class ) );
+
+                    Log.i( "vcvcv", subject[position] );
+
+                    gg = subject[position];
+                    timer1 = Integer.parseInt( timer[position] );
+
+                }
 
 
-
-                TextView tv1 = subject_list.findViewById(R.id.tv1);
-                TextView tv2 = subject_list.findViewById(R.id.tv2);
-                Button b_add=subject_list.findViewById(R.id.b_add);
-
-
-                TextView f_date = subject_list.findViewById(R.id.f_date);
-                TextView s_date = subject_list.findViewById(R.id.s_date);
-
-                TextView f_time = subject_list.findViewById(R.id.f_time);
-                TextView s_time = subject_list.findViewById(R.id.s_time);
-
-                tv1.setText(subject[position]);
-                tv2.setText(timer[position]);
-
-
-                f_date.setText(first_date[position]);
-                s_date.setText(second_date[position]);
-
-                f_time.setText(first_time[position]);
-                s_time.setText(second_time[position]);
-
-                b_add.setOnClickListener(new View.OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(show_subjectStudent.this, show_Qus_stu.class));
-
-                        Log.i("vcvcv", subject[position]);
-
-                        gg=subject[position];
-                        timer1= Integer.parseInt(timer[position]);
-
-                    }
-
-
-                });
-
-
-
-
-
-
-
-
-
-
-
+            } );
 
 
             return subject_list;

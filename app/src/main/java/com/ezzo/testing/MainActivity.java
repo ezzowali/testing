@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        tx1 = findViewById(R.id.textView);
         tx2 = findViewById(R.id.textView2);
 
 

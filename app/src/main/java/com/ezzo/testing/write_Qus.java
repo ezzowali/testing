@@ -1,35 +1,18 @@
 package com.ezzo.testing;
+
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.HashMap;
 
 
 public class write_Qus extends AppCompatActivity {
@@ -37,7 +20,7 @@ public class write_Qus extends AppCompatActivity {
 
 
     Button b1, b2;
-    EditText ed1, ed2, ed3, ed4, ed5, ed;
+    EditText ed1, ed2, ed3, ed4, ed5, ed,picture;
 
     String Subject = show_subjectAdmin.gg;
 
@@ -50,13 +33,13 @@ public class write_Qus extends AppCompatActivity {
 
 
 
-
         ed5 = findViewById( R.id.ed5 );
         ed = findViewById( R.id.ed );
         ed1 = findViewById( R.id.ed1 );
         ed2 = findViewById( R.id.ed2 );
         ed3 = findViewById( R.id.ed3 );
         ed4 = findViewById( R.id.ed4 );
+        picture = findViewById( R.id.pic );
         b1 = findViewById( R.id.b1 );
         b2 = findViewById( R.id.button );
 
@@ -74,7 +57,7 @@ public class write_Qus extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String Question, option1, option2, option3, option4, right_answer;
+                final String Question, option1, option2, option3, option4, right_answer,pic;
 
 
                 Question = String.valueOf( ed1.getText() );
@@ -83,6 +66,8 @@ public class write_Qus extends AppCompatActivity {
                 option3 = String.valueOf( ed5.getText() );
                 option4 = String.valueOf( ed.getText() );
                 right_answer = String.valueOf( ed4.getText() );
+                pic = String.valueOf( picture.getText());
+
 
 
                 if ((!Question.equals( "" )) && (!option1.equals( "" )) && (!option2.equals( "" )) &&
@@ -93,7 +78,7 @@ public class write_Qus extends AppCompatActivity {
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[7];
+                            String[] field = new String[8];
                             field[0] = "Question";
                             field[1] = "option1";
                             field[2] = "option2";
@@ -101,7 +86,7 @@ public class write_Qus extends AppCompatActivity {
                             field[4] = "option4";
                             field[5] = "right_answer";
                             field[6] = "Subject";
-
+                            field[7]="pic";
 
 //                            Log.i("bit", getStringImage(bitmap));
 
@@ -114,7 +99,7 @@ public class write_Qus extends AppCompatActivity {
                             //Creating array for data
 
 
-                            String[] data = new String[7];
+                            String[] data = new String[8];
                             data[0] = Question;
                             data[1] = option1;
                             data[2] = option2;
@@ -122,6 +107,7 @@ public class write_Qus extends AppCompatActivity {
                             data[4] = option4;
                             data[5] = right_answer;
                             data[6] = Subject;
+                            data[7] = pic;
 
 
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/wriutteq"
     android:fillViewport="true"> <!--IMPORTANT otherwise backgrnd img. will not fill the whole screen -->
 
     <RelativeLayout
@@ -14,7 +16,6 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context=".write_Qus">
-
 
         <EditText
             android:id="@+id/ed1"
@@ -117,6 +118,37 @@
             android:ems="10"
             android:hint="الاختيار الصحيح"
             android:inputType="textPersonName" />
+        <TextView
+            android:id="@+id/txt_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed4"
+            android:layout_alignStart="@+id/ed4"
+            android:layout_alignLeft="@+id/ed4"
+            android:layout_alignEnd="@+id/ed4"
+            android:layout_alignRight="@+id/ed4"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:ems="10"
+            android:hint="للمدخل التالي : اجب ب yes اذا تواجد للسؤال صورة واذا لا يوجد no  "
+            android:inputType="textMultiLine"/>
+
+        <EditText
+            android:id="@+id/pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_pic"
+            android:layout_alignStart="@+id/txt_pic"
+            android:layout_alignLeft="@+id/txt_pic"
+            android:layout_alignEnd="@+id/txt_pic"
+            android:layout_alignRight="@+id/txt_pic"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:ems="10"
+            android:hint="yes /no"
+            android:inputType="textPersonName" />
 
 
         <Button
@@ -124,15 +156,18 @@
             style="@android:style/Widget.Button"
             android:layout_width="313dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ed"
+            android:layout_below="@+id/pic"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="103dp"
+            android:background="#C9FDA4"
             android:text="تسجيل السؤال "
+
             android:textSize="16sp"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"
+            app:backgroundTint="#C9FDA4" />
 
         <Button
             android:id="@+id/button"
@@ -144,18 +179,16 @@
             android:layout_alignEnd="@+id/b1"
             android:layout_alignRight="@+id/b1"
             android:layout_alignBottom="@+id/b1"
-            android:layout_marginStart="79dp"
-            android:layout_marginLeft="79dp"
-            android:layout_marginEnd="68dp"
-            android:layout_marginRight="68dp"
-            android:layout_marginBottom="-82dp"
+            android:layout_marginStart="77dp"
+            android:layout_marginLeft="77dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="-68dp"
+            android:background="#C9FDA4"
             android:text="خروج"
             android:textSize="16sp"
-            android:textStyle="normal|bold" />
-
-
-
-
+            android:textStyle="normal|bold"
+            app:backgroundTint="#C9FDA4" />
 
 
     </RelativeLayout>
