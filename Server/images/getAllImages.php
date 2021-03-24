@@ -1,7 +1,7 @@
 <?php
  require_once('dbConnect.php');
  
- $sql = "SELECT * FROM `images` ";
+ $sql = "SELECT * FROM `Qus_sub` ";
  
  $res = mysqli_query($con,$sql);
  
@@ -9,7 +9,12 @@
  
  while($row = mysqli_fetch_array($res)){
  array_push($result,array('url'=>$row['image'],
- 'question'=>$row['question']
+ 'Question'=>$row['Question'], 'Subject'=>$row['Subject'],
+  'option1'=>$row['option1'], 'option2'=>$row['option2'],
+  'option3'=>$row['option3'], 'option4'=>$row['option4'],
+  'right_answer'=>$row['right_answer']
+
+
 ));
  }
  

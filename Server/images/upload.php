@@ -2,12 +2,22 @@
  
  if($_SERVER['REQUEST_METHOD']=='POST'){
  
- $image = $_POST['image'];
- $question  = $_POST['question'];
+ $Subject = $_POST['Subject'];
+ $Question  = $_POST['Question'];
+ $option1 = $_POST['option1'];
+ $option2  = $_POST['option2'];
+ $option3 = $_POST['option3'];
+ $option4  = $_POST['option4'];
+ $right_answer = $_POST['right_answer'];
+$image = $_POST['image'];
+
+
+
  
+
  require_once('dbConnect.php');
  
- $sql ="SELECT id FROM images ORDER BY id ASC";
+ $sql ="SELECT id FROM Qus_sub ORDER BY id ASC";
  
  $res = mysqli_query($con,$sql);
  
@@ -21,13 +31,11 @@
  
  $path = "uploads/$id.jpeg";
 
-
-
-
- 
  $actualpath = "http://192.168.64.2/Server/images/$path";
  
- $sql = "INSERT INTO images (image,question) VALUES ('$actualpath','$question ')";
+ $sql = "INSERT INTO Qus_sub (image,Question,option1,option2,option3,option4,right_answer,Subject) 
+ VALUES ('$actualpath','$Question','
+ $option1','$option2','$option3','$option4','$right_answer','$Subject ')";
  
  if(mysqli_query($con,$sql)){
  file_put_contents($path,base64_decode($image));
