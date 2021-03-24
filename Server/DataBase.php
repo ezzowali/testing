@@ -134,7 +134,7 @@ class DataBase
 
 
 
-    function Qus_sub($table,$Subject, $Question, $option1,$option2,$option3,$option4,$right_answer)
+    function Qus_sub($table,$Subject, $Question, $option1,$option2,$option3,$option4,$right_answer,$pic)
     {
 
         $Question = $this->prepareData($Question);
@@ -144,11 +144,25 @@ class DataBase
         $option4 = $this->prepareData($option4);
         $right_answer= $this->prepareData($right_answer);
         $Subject=$this->prepareData($Subject);
+        $pic=$this->prepareData($pic);
+
+        
+      
+
+
+
+
+ 
+
+ 
+
+
+
 
         $this->sql =
-            "INSERT INTO " . $table . " (Subject,Question, option1,option2,option3,option4,right_answer) VALUES ('" . "$Subject" . "','" . "$Question" . "','" . "$option1" 
+            "INSERT INTO " . $table . " (Subject,Question, option1,option2,option3,option4,right_answer,pic) VALUES ('" . "$Subject" . "','" . "$Question" . "','" . "$option1" 
             . "','" . "$option2" . "','" . "$option3" . "','" . "$option4" . "','" 
-            . "$right_answer" . "')";
+            . "$right_answer" . "','" . "$pic" . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
